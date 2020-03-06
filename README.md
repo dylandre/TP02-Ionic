@@ -1,4 +1,5 @@
-# TP02-Ionic
+# TP02-IONIC
 
-From Ionic blank starter
+From *ionic blank starter*
+
 ![Angular CI](https://github.com/dylandre/TP02-Ionic/workflows/Angular%20CI/badge.svg)
