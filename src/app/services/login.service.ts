@@ -4,11 +4,8 @@ import iUser from '../models/iUser';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import User from '../models/User';
-import {error} from 'util';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LoginService {
 
   constructor(private http: HttpClient) {}
