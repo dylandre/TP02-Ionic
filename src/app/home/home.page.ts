@@ -21,7 +21,7 @@ export class HomePage {
     this.constLocation();
   }
 
-  updateTitle() {
+    updateTitle() {
     this.title = 'Mon Nouveau Titre';
   }
 

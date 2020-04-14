@@ -25,7 +25,8 @@ describe('LoginPage', () => {
     TestBed.configureTestingModule({
       declarations: [ LoginPage ],
       imports: [IonicModule.forRoot(), CommonModule, HttpClientTestingModule,
-        FormsModule]
+        FormsModule],
+      providers: [LoginService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoginPage);
@@ -39,7 +40,7 @@ describe('LoginPage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Login',() => {
+  it('Login', () => {
     // a l initialisation le user doit etre undefined
     expect(component.user).toBeUndefined();
 
