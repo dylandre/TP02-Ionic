@@ -49,5 +49,40 @@
     <ion-card *ngIf="imgData">
       <img [src]="imgData">
     </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Vos Coordonnées</ion-card-title>
+        <ion-card-subtitle>En instantané</ion-card-subtitle>
+      </ion-card-header>
+      <ion-item *ngIf="instLatitude">Latitude : {{instLatitude}}</ion-item>
+      <ion-item *ngIf="instLongitude">Longitude : {{instLongitude}}</ion-item>
+      <ion-button (click)="getLocation()">Get Instant Geolocation</ion-button>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Vos Coordonnées</ion-card-title>
+        <ion-card-subtitle>En continue</ion-card-subtitle>
+      </ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-list>
+              <ion-list-header>LATITUDE</ion-list-header>
+              <ion-item *ngFor="let latitude of constLatitude">
+                <ion-label color="success">{{constLatitude}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="6">
+            <ion-list>
+              <ion-list-header>LONGITUDE</ion-list-header>
+              <ion-item *ngFor="let longitude of constLongitude">
+                <ion-label color="success">{{constLongitude}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
   </div>
 </ion-content>

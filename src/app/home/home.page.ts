@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,14 @@ export class HomePage {
 
   title: string;
   imgData: string;
+  instLatitude: number;
+  instLongitude: number;
+  constLatitude: any = [];
+  constLongitude: any = [];
 
-  constructor(private alertController: AlertController, private camera: Camera) {}
+  constructor(private alertController: AlertController, private camera: Camera, private geolocation: Geolocation) {
+    this.constLocation();
+  }
 
   updateTitle() {
     this.title = 'Mon Nouveau Titre';
@@ -30,7 +37,7 @@ export class HomePage {
       buttons: ['OK']
     });
     // quand l alerte sera masquée
-    alert.onDidDismiss().then(() => console.log('alerte masquée'))
+    alert.onDidDismiss().then(() => console.log('alerte masquée'));
 
     // affichage de l alerte
     await alert.present();
@@ -52,6 +59,33 @@ export class HomePage {
       this.imgData = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
       // Handle error
+    });
+  }
+
+  getLocation() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // resp.coords.latitude
+      // resp.coords.longitude
+      console.log('Lat : ' + resp.coords.latitude);
+      console.log('Lng : ' + resp.coords.longitude);
+      this.instLatitude = resp.coords.latitude;
+      this.instLongitude = resp.coords.longitude;
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+  }
+
+  constLocation() {
+    let watch = this.geolocation.watchPosition();
+    watch.subscribe((data) => {
+      // data can be a set of coordinates, or an error (if an error occurred).
+      // data.coords.latitude
+      // data.coords.longitude
+      console.log('Lat : ' + data.coords.latitude);
+      console.log('Lng : ' + data.coords.longitude);
+
+      this.constLatitude.push(data.coords.latitude);
+      this.constLongitude.push(data.coords.longitude);
     });
   }
 }
