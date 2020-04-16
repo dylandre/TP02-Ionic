@@ -22,5 +22,5 @@
         - Camera :white_check_mark:
         - Géolocalisation :white_check_mark:
         - Notification :white_check_mark:
-        - Preview de la Caméra dans une nouvelle page
+        - Preview de la Caméra dans une nouvelle page :white_check_mark:
     - Android local Build :white_check_mark:
