@@ -17,9 +17,7 @@ export class HomePage {
   constLatitude: any = [];
   constLongitude: any = [];
 
-  constructor(private alertController: AlertController, private camera: Camera, private geolocation: Geolocation) {
-    this.constLocation();
-  }
+  constructor(private alertController: AlertController, private camera: Camera, private geolocation: Geolocation) {}
 
     updateTitle() {
     this.title = 'Mon Nouveau Titre';
