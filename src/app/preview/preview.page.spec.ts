@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { PreviewPage } from './preview.page';
 import { CameraPreview } from '@ionic-native/camera-preview/ngx';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('PreviewPage', () => {
   let component: PreviewPage;
@@ -11,7 +12,7 @@ describe('PreviewPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PreviewPage ],
-      imports: [IonicModule.forRoot()],
+      imports: [IonicModule.forRoot(), RouterTestingModule],
       providers: [CameraPreview]
     }).compileComponents();
 
