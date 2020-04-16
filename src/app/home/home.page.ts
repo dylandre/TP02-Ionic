@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -78,7 +79,7 @@ export class HomePage {
   }
 
   constLocation() {
-    let watch = this.geolocation.watchPosition();
+    let watch = this.geolocation.watchPosition().pipe(filter((p) => p.coords !== undefined));
     watch.subscribe((data) => {
       // data can be a set of coordinates, or an error (if an error occurred).
       // data.coords.latitude
