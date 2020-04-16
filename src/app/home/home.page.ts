@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,10 @@ export class HomePage {
   constLatitude: any = [];
   constLongitude: any = [];
 
-  constructor(private alertController: AlertController, private camera: Camera, private geolocation: Geolocation) {}
+  constructor(private alertController: AlertController,
+              private camera: Camera,
+              private geolocation: Geolocation,
+              private localNotifications: LocalNotifications) {}
 
     updateTitle() {
     this.title = 'Mon Nouveau Titre';
@@ -84,6 +88,14 @@ export class HomePage {
 
       this.constLatitude.push(data.coords.latitude);
       this.constLongitude.push(data.coords.longitude);
+    });
+  }
+
+  sendNotifications() {
+    // Schedule delayed notification
+    this.localNotifications.schedule({
+      title: 'New Notifications !',
+      text: 'Vous venez de recevoir votre Notification',
     });
   }
 }
