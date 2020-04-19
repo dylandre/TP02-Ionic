@@ -1,44 +1,20 @@
 :host {
-  display: flex;
-  align-items: center;
+  text-align: center;
 
-  ion-content {
-    max-width: 400px;
-    display: flex;
-    div{
-      flex: 1;
-      ion-item {
-        margin-bottom: 5px;
+  .container {
+    position: relative;
 
-        ion-label {
-          color: blue;
-
-          &.color-red {
-            color: red;
-          }
+    ion-card {
+      ion-card-header {
+        ion-card-subtitle {
+          color: red;
+        }
+      }
+      ion-card-content {
+        ion-button {
+          margin-top: 2%;
         }
       }
     }
-
   }
 }
-
-/*ion-content {
-  width: 400px;
-
-  > ion-item {
-    margin-bottom: 10px;
-
-    &:first-child {
-      > ion-label {
-        color: red;
-      }
-    }
-
-    &:nth-child(2) {
-      > ion-label {
-        color: blue;
-      }
-    }
-  }
-}*/

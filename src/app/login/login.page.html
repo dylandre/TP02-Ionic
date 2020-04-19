@@ -1,16 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      WebMobile - Ionic
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <div>
-    <ion-item>
-      <ion-label position="floating">Identifiant</ion-label>
-      <ion-input [(ngModel)]="id"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating" class="color-red">Mot de Passe</ion-label>
-      <ion-input type="password" [(ngModel)]="mdp"></ion-input>
-    </ion-item>
-    <ion-button [disabled]="mdp.length < 3 || id.length < 3" color="primary" (click)="login()">Connexion</ion-button>
+  <div class="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>LoginPage</ion-card-title>
+        <ion-card-subtitle>Retrouver vos identifiants !</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Identifiant</ion-label>
+          <ion-input [(ngModel)]="id"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" class="color-red">Mot de Passe</ion-label>
+          <ion-input type="password" [(ngModel)]="mdp"></ion-input>
+        </ion-item>
+        <ion-button [disabled]="mdp.length < 3 || id.length < 3" color="primary" (click)="login()">Connexion</ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
+
   <span *ngIf="error"> Une erreur est survenue : {{error}} </span>
   <span *ngIf="loading"> Chargement en cours... </span>
   <span *ngIf="user && !loading"> Bienvenue {{user.nom}}</span>
+
+  <ion-button color="light" routerLink="/home">Back Home</ion-button>
 </ion-content>

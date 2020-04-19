@@ -6,79 +6,104 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <div id="container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Majeur : WebMobile</ion-card-title>
-        <ion-card-subtitle>2nd TP - Ionic</ion-card-subtitle>
-      </ion-card-header>
+    <ion-grid fixed="true">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Majeur : WebMobile</ion-card-title>
+              <ion-card-subtitle>2nd TP - Ionic</ion-card-subtitle>
+            </ion-card-header>
 
-      <ion-item (click)="fireAlert()" class="ion-activated">
-        <ion-icon name="alert-outline" slot="start"></ion-icon>
-        <ion-label>Fire Alert</ion-label>
-      </ion-item>
+            <ion-item (click)="fireAlert()" class="ion-activated">
+              <ion-icon name="alert-outline" slot="start"></ion-icon>
+              <ion-label>Fire Alert</ion-label>
+            </ion-item>
 
-      <ion-item (click)="takePicture()" class="ion-activated">
-        <ion-icon name="image-outline" slot="start"></ion-icon>
-        <ion-label>Take Picture</ion-label>
-      </ion-item>
+            <ion-item (click)="takePicture()" class="ion-activated">
+              <ion-icon name="image-outline" slot="start"></ion-icon>
+              <ion-label>Take Picture</ion-label>
+            </ion-item>
 
-      <ion-item routerLink="/login">
-        <ion-icon name="person-outline" slot="start"></ion-icon>
-        <ion-label>Go to loginPage</ion-label>
-      </ion-item>
+            <ion-item routerLink="/login">
+              <ion-icon name="person-outline" slot="start"></ion-icon>
+              <ion-label>Go to loginPage</ion-label>
+            </ion-item>
 
-      <ion-item routerLink="/preview">
-        <ion-icon name="camera-outline" slot="start"></ion-icon>
-        <ion-label>Go to Camera Preview</ion-label>
-      </ion-item>
-    </ion-card>
-    <ion-card *ngIf="imgData">
-      <img [src]="imgData">
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Vos Coordonnées</ion-card-title>
-        <ion-card-subtitle>En instantané</ion-card-subtitle>
-      </ion-card-header>
-      <ion-item *ngIf="instLatitude">Latitude : {{instLatitude}}</ion-item>
-      <ion-item *ngIf="instLongitude">Longitude : {{instLongitude}}</ion-item>
-      <ion-button (click)="getLocation()">Get Instant Geolocation</ion-button>
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Vos Coordonnées</ion-card-title>
-        <ion-card-subtitle>En continue</ion-card-subtitle>
-      </ion-card-header>
-      <ion-button (click)="constLocation()">Get Instant Geolocation</ion-button>
-      <ion-grid>
-        <ion-row>
-          <ion-col size="6">
-            <ion-list>
-              <ion-list-header>LATITUDE</ion-list-header>
-              <ion-item *ngFor="let oneLatitude of constLatitude">
-                <ion-label color="success">{{oneLatitude}}</ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-          <ion-col size="6">
-            <ion-list>
-              <ion-list-header>LONGITUDE</ion-list-header>
-              <ion-item *ngFor="let oneLongitude of constLongitude">
-                <ion-label color="success">{{oneLongitude}}</ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Notifications</ion-card-title>
-        <ion-card-subtitle>Envoi une Notification</ion-card-subtitle>
-      </ion-card-header>
-      <ion-button (click)="sendNotifications()">Get Notification</ion-button>
-    </ion-card>
+            <ion-item routerLink="/preview">
+              <ion-icon name="camera-outline" slot="start"></ion-icon>
+              <ion-label>Go to Camera Preview</ion-label>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Galerie</ion-card-title>
+              <ion-card-subtitle>Votre Photo</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content *ngIf="imgData">
+              <img [src]="imgData">
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Vos Coordonnées</ion-card-title>
+              <ion-card-subtitle>En instantané</ion-card-subtitle>
+            </ion-card-header>
+            <ion-item *ngIf="instLatitude">Latitude : {{instLatitude}}</ion-item>
+            <ion-item *ngIf="instLongitude">Longitude : {{instLongitude}}</ion-item>
+            <ion-button (click)="getLocation()">Get Instant Geolocation</ion-button>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Vos Coordonnées</ion-card-title>
+              <ion-card-subtitle>En continue</ion-card-subtitle>
+            </ion-card-header>
+            <ion-button (click)="constLocation()">Get Instant Geolocation</ion-button>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-list>
+                    <ion-list-header>LATITUDE</ion-list-header>
+                    <ion-item *ngFor="let oneLatitude of constLatitude">
+                      <ion-label color="success">{{oneLatitude}}</ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-list>
+                    <ion-list-header>LONGITUDE</ion-list-header>
+                    <ion-item *ngFor="let oneLongitude of constLongitude">
+                      <ion-label color="success">{{oneLongitude}}</ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Notifications</ion-card-title>
+              <ion-card-subtitle>Envoi une Notification</ion-card-subtitle>
+            </ion-card-header>
+            <ion-button (click)="sendNotifications()">Get Notification</ion-button>
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

@@ -6,6 +6,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {LoginService} from '../services/login.service';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('LoginPage', () => {
   let component: LoginPage;
@@ -25,7 +26,7 @@ describe('LoginPage', () => {
     TestBed.configureTestingModule({
       declarations: [ LoginPage ],
       imports: [IonicModule.forRoot(), CommonModule, HttpClientTestingModule,
-        FormsModule],
+        FormsModule, RouterTestingModule],
       providers: [LoginService]
     }).compileComponents();
 
